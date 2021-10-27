@@ -1,0 +1,9 @@
+{% extends "layout.html.twig" %}
+
+{% block content_body %}
+    <h1>I am a detail page</h1>
+    <div>
+        {{ dump(blog) }}
+        <a href="{{ path('blog_list') }}">back to list</a>
+    </div>
+{% endblock %}

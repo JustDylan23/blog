@@ -1,0 +1,38 @@
+{% extends 'layout_centered.html.twig' %}
+
+{% block content_body %}
+    <div class="align-self-center my-auto">
+        <div class="card card-body">
+            <form method="post">
+                <h1 class="h3 mb-3 font-weight-normal">
+                    Please sign in
+                </h1>
+                {% if error %}
+                    <div class="alert alert-danger">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
+                {% if app.user %}
+                    <div class="mb-3">
+                        You are logged in as {{ app.user.userIdentifier }}, <a href="{{ path('app_logout') }}">Logout</a>
+                    </div>
+                {% endif %}
+                <div class="mb-3">
+                    <label for="inputUsername" class="form-label">Username</label>
+                    <input type="text" value="{{ last_username }}" autocomplete="username" autofocus required name="_username" class="form-control" id="inputUsername">
+                </div>
+                <div class="mb-3">
+                    <label for="inputPassword" class="form-label">Password</label>
+                    <input type="password" name="_password" class="form-control" id="inputPassword" autocomplete="current-password"
+                           required>
+                </div>
+                <div class="mb-3 form-check">
+                    <input type="checkbox" name="_remember_me" class="form-check-input" id="inputRememberMe">
+                    <label class="form-check-label" for="inputRememberMe">Remember me</label>
+                </div>
+                <button type="submit" class="btn btn-primary w-100 d-flex align-items-center justify-content-center">
+                    Sign in
+                </button>
+                <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+            </form>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+    <div id="app" class="d-flex flex-column min-vh-100">
+        {% include 'components/header.html.twig' %}
+        <main class="flex-grow-1 container-fluid d-flex flex-column py-2">
+            {% block content_body %}{% endblock %}
+        </main>
+        {% include 'components/footer.html.twig' %}
+    </div>
+{% endblock %}
